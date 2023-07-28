@@ -5,9 +5,7 @@ public class Explanation extends Activity {
 
     public Explanation(String title, String code, Section section, String text) {
         super(title, code, section);
-        if (text==null || text.isEmpty()) {
-            throw new IllegalArgumentException("O texto da explicação é obrigatório.");
-        }
+        CommonValidations.validateText(text);
         this.text = text;
     }
 

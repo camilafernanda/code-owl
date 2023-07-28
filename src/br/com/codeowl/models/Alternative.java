@@ -8,9 +8,7 @@ public class Alternative {
     private Question question;
 
     public Alternative(String text, boolean correct, Question question) {
-        if (text==null || text.isEmpty()) {
-            throw new IllegalArgumentException("O texto da alternativa é obrigatório.");
-        }
+        CommonValidations.validateText(text);
         if (question==null) {
             throw new IllegalArgumentException("A questão a qual a alternativa pertence é obrigatória.");
         }

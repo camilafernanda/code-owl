@@ -9,12 +9,8 @@ public abstract class Activity {
     private Section section;
 
     public Activity(String title, String code, Section section) {
-        if (title==null || title.isEmpty()) {
-            throw new IllegalArgumentException("O título é obrigatório.");
-        }
-        if (code==null || code.isEmpty() || !code.matches("^[a-z0-9-]+$")) {
-            throw new IllegalArgumentException("O código é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
-        }
+        CommonValidations.validateTitle(title);
+        CommonValidations.validateCode(code);
         this.title = title;
         this.code = code;
         this.section = section;

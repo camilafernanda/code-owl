@@ -10,12 +10,8 @@ public class Section {
     private Course course;
 
     public Section(String name, String code, Course course) {
-        if (name==null || name.isEmpty()) {
-            throw new IllegalArgumentException("O nome é obrigatório.");
-        }
-        if (code==null || code.isEmpty() || !code.matches("^[a-z0-9-]+$")) {
-            throw new IllegalArgumentException("O código é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
-        }
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
         this.name = name;
         this.code = code;
         this.course = course;

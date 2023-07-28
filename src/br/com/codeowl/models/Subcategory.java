@@ -11,12 +11,8 @@ public class Subcategory {
     private Category category;
 
     public Subcategory(String name, String code, Category category) {
-        if (name==null || name.isEmpty()) {
-            throw new IllegalArgumentException("O nome é obrigatório.");
-        }
-        if (code==null || code.isEmpty() || !code.matches("^[a-z0-9-]+$")) {
-            throw new IllegalArgumentException("O código é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
-        }
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
         this.name = name;
         this.code = code;
         this.category = category;
@@ -32,6 +28,10 @@ public class Subcategory {
 
     public void setSequence(int sequence) {
         this.sequence = sequence;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

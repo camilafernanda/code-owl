@@ -12,7 +12,7 @@ public class Question extends Activity {
 
     public Question(String title, String code, Section section, String statement, QuestionType questionType) {
         super(title, code, section);
-        if (statement==null || statement.isEmpty()) {
+        if (statement==null || statement.isBlank()) {
             throw new IllegalArgumentException("O enunciado da questão é obrigatório.");
         }
         if (questionType==null) {

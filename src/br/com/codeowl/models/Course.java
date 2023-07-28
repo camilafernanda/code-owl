@@ -12,18 +12,16 @@ public class Course {
     private Subcategory subcategory;
 
     public Course(String name, String code, int duration, String teacher, Subcategory subcategory) {
-        if (name==null || name.isEmpty()) {
-            throw new IllegalArgumentException("O nome do curso é obrigatório.");
-        }
-        if (code==null || code.isEmpty() || !code.matches("^[a-z0-9-]+$")) {
-            throw new IllegalArgumentException("O código do curso é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
-        }
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+
         if (duration<1 || duration>20) {
             throw new IllegalArgumentException("O tempo para finalização do curso (em horas) deve ser entre 1 e 20 horas.");
         }
-        if (teacher==null || teacher.isEmpty()) {
+        if (teacher==null || teacher.isBlank()) {
             throw new IllegalArgumentException("O nome da pessoa instrutora é obrigatório.");
         }
+
         this.name = name;
         this.code = code;
         this.duration = duration;

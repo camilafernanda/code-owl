@@ -7,7 +7,7 @@ public class Video extends Activity {
 
     public Video(String title, String code, Section section, String url) {
         super(title, code, section);
-        if (url==null || url.isEmpty()) {
+        if (url==null || url.isBlank()) {
             throw new IllegalArgumentException("A url do vídeo é obrigatória.");
         }
         this.url = url;
