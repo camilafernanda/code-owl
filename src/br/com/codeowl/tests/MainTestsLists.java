@@ -42,8 +42,6 @@ public class MainTestsLists {
 
         List<Course> listCourses = List.of(segurancaDeRedes, javaOO, introducaoKotlin);
 
-        for (Course item: listCourses) {
-            System.out.println(item);
-        }
+        listCourses.forEach(System.out::println);
     }
 }
