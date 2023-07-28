@@ -40,10 +40,7 @@ public class MainTestsLists {
         Course javaOO = new Course("Java e Orientação a Objetos", "java-oo", 20, "Jacque", linguagemProgramacao);
         Course introducaoKotlin = new Course("Introdução ao Kotlin", "introducao-kotlin", 15, "Jeni", linguagemProgramacao);
 
-        List<Course> listCourses = new LinkedList<>();
-        listCourses.add(segurancaDeRedes);
-        listCourses.add(javaOO);
-        listCourses.add(introducaoKotlin);
+        List<Course> listCourses = List.of(segurancaDeRedes, javaOO, introducaoKotlin);
 
         for (Course item: listCourses) {
             System.out.println(item);
