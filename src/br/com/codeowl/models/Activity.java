@@ -5,7 +5,7 @@ public abstract class Activity {
     private String title;
     private String code;
     private int sequence;
-    private boolean available = false;
+    private boolean available;
     private Section section;
 
     public Activity(String title, String code, Section section) {

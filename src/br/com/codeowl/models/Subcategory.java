@@ -6,7 +6,7 @@ public class Subcategory {
     private String code;
     private String description;
     private String studyGuide;
-    private boolean available = false;
+    private boolean available;
     private int sequence;
     private Category category;
 

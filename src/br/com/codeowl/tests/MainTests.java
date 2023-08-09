@@ -32,7 +32,6 @@ public class MainTests {
         Section introducaoBlueTeam = new Section("O que é Blue Team", "o-que-e-blue-team", segurancaDeRedes);
         introducaoBlueTeam.setSequence(1);
         introducaoBlueTeam.setAvailable(true);
-        introducaoBlueTeam.setTest(false);
 
         Question exercicioConceitoBlueTeam = new Question("Conceito do Blue Team", "conceito-blue-team", introducaoBlueTeam, "Qual o conceito de Blue Team?", QuestionType.SINGLE_CHOICE);
         exercicioConceitoBlueTeam.setSequence(1);

@@ -5,8 +5,8 @@ public class Section {
     private String name;
     private String code;
     private int sequence;
-    private boolean available = false;
-    private boolean test = false;
+    private boolean available;
+    private boolean test;
     private Course course;
 
     public Section(String name, String code, Course course) {

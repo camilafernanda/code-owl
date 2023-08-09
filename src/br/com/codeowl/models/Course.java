@@ -4,7 +4,7 @@ public class Course {
     private String name;
     private String code;
     private int duration;
-    private boolean availability = false;
+    private boolean availability;
     private String targetAudience;
     private String teacher;
     private String courseOutline;
