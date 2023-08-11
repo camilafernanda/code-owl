@@ -3,29 +3,29 @@ package br.com.codeowl.models;
 public class Course {
     private String name;
     private String code;
-    private int duration;
+    private int estimatedTime;
     private boolean availability;
     private String targetAudience;
-    private String teacher;
+    private String instructorName;
     private String courseOutline;
     private String developedSkills;
     private Subcategory subcategory;
 
-    public Course(String name, String code, int duration, String teacher, Subcategory subcategory) {
+    public Course(String name, String code, int estimatedTime, String instructorName, Subcategory subcategory) {
         CommonValidations.validateName(name);
         CommonValidations.validateCode(code);
 
-        if (duration<1 || duration>20) {
+        if (estimatedTime<1 || estimatedTime>20) {
             throw new IllegalArgumentException("O tempo para finalização do curso (em horas) deve ser entre 1 e 20 horas.");
         }
-        if (teacher==null || teacher.isBlank()) {
+        if (instructorName ==null || instructorName.isBlank()) {
             throw new IllegalArgumentException("O nome da pessoa instrutora é obrigatório.");
         }
 
         this.name = name;
         this.code = code;
-        this.duration = duration;
-        this.teacher = teacher;
+        this.estimatedTime = estimatedTime;
+        this.instructorName = instructorName;
         this.subcategory = subcategory;
     }
 
@@ -50,8 +50,8 @@ public class Course {
         return "*** Curso ***" + "\n" +
                 "Nome: " + name + "\n" +
                 "Code: " + code + "\n" +
-                "Duração: " + duration + " horas\n" +
-                "Instrutor(a): " + teacher + "\n" +
+                "Duração: " + estimatedTime + " horas\n" +
+                "Instrutor(a): " + instructorName + "\n" +
                 "Disponível: " + availability + "\n" +
                 "Público Alvo: " + targetAudience + "\n" +
                 "Ementa: " + courseOutline + "\n" +
