@@ -13,11 +13,13 @@ public class Video extends Activity {
         this.url = url;
     }
 
-    public void setMinutesDuration(int minutesDuration) {
+    public Video(String title, String code, Section section, String url, int minutesDuration, String transcription) {
+        super(title, code, section);
+        if (url==null || url.isBlank()) {
+            throw new IllegalArgumentException("A url do vídeo é obrigatória.");
+        }
+        this.url = url;
         this.minutesDuration = minutesDuration;
-    }
-
-    public void setTranscription(String transcription) {
         this.transcription = transcription;
     }
 

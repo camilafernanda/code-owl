@@ -1,4 +1,4 @@
-package br.com.codeowl.models;
+package br.com.codeowl.validations;
 
 public class CommonValidations {
 
@@ -9,9 +9,12 @@ public class CommonValidations {
     }
 
     public static void validateCode(String code) {
-        if (code==null || code.isBlank() || !code.matches("^[a-z0-9-]+$")) {
+        if (code==null || code.isBlank() || !code.matches("\\s*[a-z0-9]+(?:-[a-z0-9]+)*\\s*")) {
             throw new IllegalArgumentException("O código é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
         }
+//        if (code==null || code.isBlank()) {
+//            throw new IllegalArgumentException("O código é obrigatório e deve ser composto apenas por letras minúsculas ou números, separados por hífen.");
+//        }
     }
 
     public static void validateTitle(String title) {

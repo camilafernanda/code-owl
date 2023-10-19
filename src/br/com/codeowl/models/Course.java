@@ -1,5 +1,7 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public class Course {
     private String name;
     private String code;
@@ -29,20 +31,25 @@ public class Course {
         this.subcategory = subcategory;
     }
 
-    public void setAvailability(boolean availability) {
+    public Course(String name, String code, int estimatedTime, boolean availability, String targetAudience, String instructorName, String courseOutline, String developedSkills, Subcategory subcategory) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+
+        if (estimatedTime<1 || estimatedTime>20) {
+            throw new IllegalArgumentException("O tempo para finalização do curso (em horas) deve ser entre 1 e 20 horas.");
+        }
+        if (instructorName ==null || instructorName.isBlank()) {
+            throw new IllegalArgumentException("O nome da pessoa instrutora é obrigatório.");
+        }
+        this.name = name;
+        this.code = code;
+        this.estimatedTime = estimatedTime;
         this.availability = availability;
-    }
-
-    public void setTargetAudience(String targetAudience) {
         this.targetAudience = targetAudience;
-    }
-
-    public void setCourseOutline(String courseOutline) {
+        this.instructorName = instructorName;
         this.courseOutline = courseOutline;
-    }
-
-    public void setDevelopedSkills(String developedSkills) {
         this.developedSkills = developedSkills;
+        this.subcategory = subcategory;
     }
 
     @Override
@@ -56,6 +63,6 @@ public class Course {
                 "Público Alvo: " + targetAudience + "\n" +
                 "Ementa: " + courseOutline + "\n" +
                 "Habilidades desenvolvidas: " + developedSkills + "\n" +
-                "Subcategoria: " + "\n" + subcategory + "\n";
+                "Subcategoria: " + "\n" + subcategory.getCode() + "\n\n";
     }
 }

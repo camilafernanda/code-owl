@@ -1,5 +1,9 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
+import java.util.List;
+
 public class Category {
     private String name;
     private String code;
@@ -17,31 +21,47 @@ public class Category {
         this.code = code;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setStudyGuide(String studyGuide) {
-        this.studyGuide = studyGuide;
-    }
-
-    public void setAvailable(boolean available) {
+    public Category(String name, String code, boolean available) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+        this.name = name;
+        this.code = code;
         this.available = available;
     }
 
-    public void setSequence(int sequence) {
-        this.sequence = sequence;
-    }
-
-    public void setIconImage(String iconImage) {
-        this.iconImage = iconImage;
-    }
-
-    public void setColorCode(String colorCode) {
+    public Category(String name, String code, String description, boolean available, int sequence, String iconImage, String colorCode) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
         if (!colorCode.matches("^#[0-9A-Fa-f]{6}$")){
             throw new IllegalArgumentException("O código da cor deve ser um valor hexadecimal válido.");
         }
+        this.name = name;
+        this.code = code;
+        this.description = description;
+        this.available = available;
+        this.sequence = sequence;
+        this.iconImage = iconImage;
         this.colorCode = colorCode;
+    }
+
+    public Category(String name, String code, String description, String studyGuide, boolean available, int sequence, String iconImage, String colorCode) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+        if (!colorCode.matches("^#[0-9A-Fa-f]{6}$")){
+            throw new IllegalArgumentException("O código da cor deve ser um valor hexadecimal válido.");
+        }
+        this.name = name;
+        this.code = code;
+        this.description = description;
+        this.studyGuide = studyGuide;
+        this.available = available;
+        this.sequence = sequence;
+        this.iconImage = iconImage;
+        this.colorCode = colorCode;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     @Override
@@ -53,7 +73,7 @@ public class Category {
                 "Guia de estudo: " + studyGuide + "\n" +
                 "Disponível: " + available + "\n" +
                 "Ordem: " + sequence + "\n" +
-                "Imagem de ícone: " + iconImage + "\n" +
-                "Cor em HTML: " + colorCode + "\n";
+                iconImage + "\n" +
+                colorCode + "\n\n";
     }
 }

@@ -1,5 +1,7 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public abstract class Activity {
 
     private String title;
@@ -13,6 +15,16 @@ public abstract class Activity {
         CommonValidations.validateCode(code);
         this.title = title;
         this.code = code;
+        this.section = section;
+    }
+
+    public Activity(String title, String code, int sequence, boolean available, Section section) {
+        CommonValidations.validateTitle(title);
+        CommonValidations.validateCode(code);
+        this.title = title;
+        this.code = code;
+        this.sequence = sequence;
+        this.available = available;
         this.section = section;
     }
 
@@ -34,9 +46,5 @@ public abstract class Activity {
 
     public Section getSection() {
         return section;
-    }
-
-    public void setSequence(int sequence) {
-        this.sequence = sequence;
     }
 }
