@@ -1,5 +1,7 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public class Subcategory {
 
     private String name;
@@ -18,20 +20,35 @@ public class Subcategory {
         this.category = category;
     }
 
-    public void setStudyGuide(String studyGuide) {
-        this.studyGuide = studyGuide;
-    }
-
-    public void setAvailable(boolean available) {
+    public Subcategory(String name, String code, Category category, String description, boolean available, int sequence) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+        this.name = name;
+        this.code = code;
+        this.category = category;
+        this.description = description;
         this.available = available;
-    }
-
-    public void setSequence(int sequence) {
         this.sequence = sequence;
     }
 
-    public void setDescription(String description) {
+    public Subcategory(String name, String code, Category category, String description, String studyGuide, boolean available, int sequence) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+        this.name = name;
+        this.code = code;
+        this.category = category;
         this.description = description;
+        this.studyGuide = studyGuide;
+        this.available = available;
+        this.sequence = sequence;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     @Override
@@ -43,6 +60,6 @@ public class Subcategory {
                 "Gui de estudo: " + studyGuide + "\n" +
                 "Disponível: " + available + "\n" +
                 "Ordem: " + sequence + "\n" +
-                "Categoria a qual faz parte: " + "\n" + category + "\n";
+                "Categoria a qual faz parte: " + "\n" + category.getCode() + "\n\n";
     }
 }

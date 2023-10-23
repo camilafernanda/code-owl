@@ -1,5 +1,7 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public class Section {
 
     private String name;
@@ -17,23 +19,14 @@ public class Section {
         this.course = course;
     }
 
-    public boolean isTest() {
-        return test;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setSequence(int sequence) {
+    public Section(String name, String code, Course course, int sequence, boolean available, boolean test) {
+        CommonValidations.validateName(name);
+        CommonValidations.validateCode(code);
+        this.name = name;
+        this.code = code;
+        this.course = course;
         this.sequence = sequence;
-    }
-
-    public void setAvailable(boolean available) {
         this.available = available;
-    }
-
-    public void setTest(boolean test) {
         this.test = test;
     }
 

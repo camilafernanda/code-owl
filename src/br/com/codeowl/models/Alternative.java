@@ -1,5 +1,7 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public class Alternative {
     private String text;
     private int sequence;
@@ -17,16 +19,16 @@ public class Alternative {
         this.question = question;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setSequence(int sequence) {
+    public Alternative(String text, int sequence, boolean correct, String justification, Question question) {
+        CommonValidations.validateText(text);
+        if (question==null) {
+            throw new IllegalArgumentException("A questão a qual a alternativa pertence é obrigatória.");
+        }
+        this.text = text;
         this.sequence = sequence;
-    }
-
-    public void setJustification(String justification) {
+        this.correct = correct;
         this.justification = justification;
+        this.question = question;
     }
 
     @Override

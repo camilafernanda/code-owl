@@ -1,15 +1,13 @@
 package br.com.codeowl.models;
 
+import br.com.codeowl.validations.CommonValidations;
+
 public class Explanation extends Activity {
     private String text;
 
     public Explanation(String title, String code, Section section, String text) {
         super(title, code, section);
         CommonValidations.validateText(text);
-        this.text = text;
-    }
-
-    public void setText(String text) {
         this.text = text;
     }
 
