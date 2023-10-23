@@ -32,6 +32,6 @@ public class TestsReadersCSV {
         Map<String, Course> courses = readerCSVCourse.getCourses();
         System.out.println(courses);
 
-        HTMLGenerator.generateHTML(categories, subcategories);
+        HTMLGenerator.generateHTML(categories, subcategories, courses);
     }
 }

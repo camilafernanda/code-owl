@@ -52,6 +52,14 @@ public class Course {
         this.subcategory = subcategory;
     }
 
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public int getEstimatedTime() {
+        return estimatedTime;
+    }
+
     @Override
     public String toString() {
         return "*** Curso ***" + "\n" +

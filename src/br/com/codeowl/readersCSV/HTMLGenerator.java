@@ -1,6 +1,7 @@
 package br.com.codeowl.readersCSV;
 
 import br.com.codeowl.models.Category;
+import br.com.codeowl.models.Course;
 import br.com.codeowl.models.Subcategory;
 
 import java.io.File;
@@ -11,8 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 public class HTMLGenerator {
-    public static void generateHTML(Map<String, Category> categories, Map<String, Subcategory> subcategories) {
+    public static void generateHTML(Map<String, Category> categories, Map<String, Subcategory> subcategories, Map<String, Course> courses) {
         try (PrintWriter write = new PrintWriter(new FileWriter("index.html"))) {
+            int totalCourses = 0;
+            int totalEstimatedTime = 0;
+
             write.println("<!DOCTYPE html>");
             write.println("<html lang=\"pt-br\">");
             write.println("<head>");
@@ -43,6 +47,22 @@ public class HTMLGenerator {
                         write.println("<p>" + lineSubcategory[3] + "</p>");
                     }
                 }
+
+                int categoryCourses = 0;
+                int categoryEstimatedTime = 0;
+
+                for (Course course : courses.values()) {
+                    if (course.getSubcategory().getCategory().getCode().equals(category.getCode())) {
+                        categoryCourses++;
+                        categoryEstimatedTime += course.getEstimatedTime();
+                    }
+                }
+
+                write.println("<p style=\"font-weight: bold;\">Número total de cursos nesta categoria: " + categoryCourses + "</p>");
+                write.println("<p style=\"font-weight: bold;\">Soma do tempo estimado nesta categoria: " + categoryEstimatedTime + " horas</p>");
+
+                totalCourses += categoryCourses;
+                totalEstimatedTime += categoryEstimatedTime;
             }
 
         } catch (IOException e) {
