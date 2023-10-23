@@ -26,13 +26,13 @@ public class ReaderCSVCategory {
             while ((line = fileCSV.readLine()) != null) {
                 String[] value = line.split(splitBy);
 
-                String name = CSVValidations.validateStringNullField(value[0], "nome");
-                String code = CSVValidations.validateStringNullField(value[1], "código");
-                int sequence = CSVValidations.validateIntField(value[2], "ordem");
-                String description = CSVValidations.validateStringNullField(value[3], "descrição");
+                String name = CSVValidations.validateStringNullField(value[0]);
+                String code = CSVValidations.validateStringNullField(value[1]);
+                int sequence = CSVValidations.validateIntField(value[2]);
+                String description = CSVValidations.validateStringNullField(value[3]);
                 boolean avaiable = value[4].equals("ATIVA");
-                String iconImage = CSVValidations.validateStringNullField(value[5], "imagem");
-                String codeColor = CSVValidations.validateStringNullField(value[6], "cor");
+                String iconImage = CSVValidations.validateStringNullField(value[5]);
+                String codeColor = CSVValidations.validateStringNullField(value[6]);
 
                 Category category = new Category(name, code, description, avaiable, sequence, iconImage, codeColor);
                 categories.put(code, category);

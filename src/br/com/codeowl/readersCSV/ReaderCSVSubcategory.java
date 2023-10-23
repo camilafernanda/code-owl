@@ -27,12 +27,12 @@ public class ReaderCSVSubcategory {
             while ((line = fileCSVSubcategory.readLine()) != null) {
                 String[] value = line.split(splitBy);
 
-                String name = CSVValidations.validateStringNullField(value[0], "nome");
-                String code = CSVValidations.validateStringNullField(value[1], "código");
-                int sequence = CSVValidations.validateIntField(value[2], "ordem");
-                String description = CSVValidations.validateStringNullField(value[3], "descrição");
+                String name = CSVValidations.validateStringNullField(value[0]);
+                String code = CSVValidations.validateStringNullField(value[1]);
+                int sequence = CSVValidations.validateIntField(value[2]);
+                String description = CSVValidations.validateStringNullField(value[3]);
                 boolean avaiable = value[4].equals("ATIVA");
-                String categoryCode = CSVValidations.validateStringNullField(value[5], "categoria");
+                String categoryCode = CSVValidations.validateStringNullField(value[5]);
 
                 Category category = categories.get(categoryCode);
 
